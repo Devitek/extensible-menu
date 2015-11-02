@@ -1,0 +1,19 @@
+{
+    "name": "devitek/menu",
+    "description": "An extensible library to manage menus",
+    "authors": [
+        {
+            "name": "Thomas SIEFFERT",
+            "email": "thomas.sieffert@devitek.fr"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Devitek\\Menu\\": "src/Menu"
+        }
+    },
+    "minimum-stability": "dev"
+}
