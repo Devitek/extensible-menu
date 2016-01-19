@@ -338,12 +338,19 @@ class Navbar extends Renderer
         $html = '';
         $template = '
             <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-cog"></i> Administration <span class="caret"></span></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"> %s <span class="caret"></span></a>
                 <ul class="dropdown-menu">
                     %s
                 </ul>
             </li>
         ';
+
+        $groupValue = (null === $this->getTranslator() ? $group->value() : $this->getTranslator()->translate($group->value()));
+
+        if (in_array(WithIcon::class, class_uses($group))) {
+            /** @var WithIcon $item */
+            $groupValue = sprintf('<i class="%s"></i> %s', $group->icon(), $groupValue);
+        }
 
         foreach ($group->items() as $item) {
             if (! $item->hasAccess()) {
@@ -353,6 +360,6 @@ class Navbar extends Renderer
             $html .= $this->renderItem($item);
         }
 
-        return sprintf($template, $html);
+        return sprintf($template, $groupValue, $html);
     }
 }
