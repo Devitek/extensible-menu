@@ -1,9 +1,9 @@
 # An extensible library to manage menus
 
-[![Latest Stable Version](https://poser.pugx.org/devitek/menu/v/stable)](https://packagist.org/packages/devitek/menu)
-[![Total Downloads](https://poser.pugx.org/devitek/menu/downloads)](https://packagist.org/packages/devitek/menu)
-[![Latest Unstable Version](https://poser.pugx.org/devitek/menu/v/unstable)](https://packagist.org/packages/devitek/menu)
-[![License](https://poser.pugx.org/devitek/menu/license)](https://packagist.org/packages/devitek/menu)
+[![Latest Stable Version](https://poser.pugx.org/devitek/extensible-menu/v/stable)](https://packagist.org/packages/devitek/extensible-menu)
+[![Total Downloads](https://poser.pugx.org/devitek/extensible-menu/downloads)](https://packagist.org/packages/devitek/extensible-menu)
+[![Latest Unstable Version](https://poser.pugx.org/devitek/extensible-menu/v/unstable)](https://packagist.org/packages/devitek/extensible-menu)
+[![License](https://poser.pugx.org/devitek/extensible-menu/license)](https://packagist.org/packages/devitek/extensible-menu)
 
 
 ## Installing
