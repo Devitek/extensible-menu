@@ -1,5 +1,7 @@
 {
     "name": "devitek/extensible-menu",
+    "license": "MIT",
+    "version": "1.0.0",
     "description": "An extensible library to manage menus",
     "authors": [
         {
@@ -15,5 +17,5 @@
             "Devitek\\Menu\\": "src/Menu"
         }
     },
-    "minimum-stability": "dev"
+    "minimum-stability": "stable"
 }

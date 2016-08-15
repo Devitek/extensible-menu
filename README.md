@@ -1,11 +1,17 @@
 # An extensible library to manage menus
 
+[![Latest Stable Version](https://poser.pugx.org/devitek/devitek/menu/v/stable)](https://packagist.org/packages/devitek/devitek/menu)
+[![Total Downloads](https://poser.pugx.org/devitek/devitek/menu/downloads)](https://packagist.org/packages/devitek/devitek/menu)
+[![Latest Unstable Version](https://poser.pugx.org/devitek/devitek/menu/v/unstable)](https://packagist.org/packages/devitek/devitek/menu)
+[![License](https://poser.pugx.org/devitek/devitek/menu/license)](https://packagist.org/packages/devitek/devitek/menu)
+
+
 ## Installing
 
-Add ```"devitek/menu": "0.*"``` to your **composer.json** by running :
+Add ```"devitek/menu": "^1.0.0"``` to your **composer.json** by running :
 
 ```
-php composer.phar require devitek/menu
+composer require devitek/menu
 ```
 
 And select version : ```0.*```
