@@ -5,6 +5,7 @@ namespace Devitek\Menu\Renderer\TwitterBootstrap;
 use Devitek\Menu\Items\Group;
 use Devitek\Menu\Items\Item;
 use Devitek\Menu\Items\Link;
+use Devitek\Menu\Items\Separator;
 use Devitek\Menu\Items\WithIcon;
 use Devitek\Menu\Menu;
 use Devitek\Menu\Renderer;
@@ -68,11 +69,11 @@ class Navbar extends Renderer
      */
     public function render()
     {
-        $color = $this->isInversed ? 'navbar-inverse' : 'navbar-default';
-        $fixed = $this->isFixedTop ? 'navbar-fixed-top' : ($this->isFixedBottom ? 'navbar-fixed-bottom' : ($this->isStaticTop ? 'navbar-static-top' : ''));
-        $fluid = $this->isFluid ? 'container-fluid' : 'container';
+        $color  = $this->isInversed ? 'navbar-inverse' : 'navbar-default';
+        $fixed  = $this->isFixedTop ? 'navbar-fixed-top' : ($this->isFixedBottom ? 'navbar-fixed-bottom' : ($this->isStaticTop ? 'navbar-static-top' : ''));
+        $fluid  = $this->isFluid ? 'container-fluid' : 'container';
         $header = $this->getHeader();
-        $menu = $this->getMenu();
+        $menu   = $this->getMenu();
 
         return vsprintf('
             <nav class="navbar %s %s">
@@ -94,6 +95,7 @@ class Navbar extends Renderer
      * Set if the navbar is fluid
      *
      * @param boolean $isFluid
+     *
      * @return Navbar
      */
     public function isFluid($isFluid = true)
@@ -107,6 +109,7 @@ class Navbar extends Renderer
      * Set if the menu should handle RWD
      *
      * @param boolean $handleResponsive
+     *
      * @return Navbar
      */
     public function handleResponsive($handleResponsive = true)
@@ -120,6 +123,7 @@ class Navbar extends Renderer
      * Set if the navbar is fixed at the top
      *
      * @param boolean $isFixedTop
+     *
      * @return Navbar
      */
     public function isFixedTop($isFixedTop = true)
@@ -133,6 +137,7 @@ class Navbar extends Renderer
      * Set if the navbar is fixed at the bottom
      *
      * @param boolean $isFixedBottom
+     *
      * @return Navbar
      */
     public function isFixedBottom($isFixedBottom = true)
@@ -146,6 +151,7 @@ class Navbar extends Renderer
      * Set if the navbar is static top
      *
      * @param boolean $isStaticTop
+     *
      * @return Navbar
      */
     public function isStaticTop($isStaticTop = true)
@@ -159,6 +165,7 @@ class Navbar extends Renderer
      * Set if the color is inversed
      *
      * @param boolean $isInversed
+     *
      * @return Navbar
      */
     public function isInversed($isInversed = true)
@@ -173,11 +180,12 @@ class Navbar extends Renderer
      *
      * @param string $brand
      * @param string $url
+     *
      * @return Navbar
      */
     public function withBrand($brand, $url = '#')
     {
-        $this->brand = $brand;
+        $this->brand    = $brand;
         $this->brandUrl = $url;
 
         return $this;
@@ -187,6 +195,7 @@ class Navbar extends Renderer
      * Set the left menu
      *
      * @param Menu $onTheLeft
+     *
      * @return Navbar
      */
     public function onTheLeft(Menu $onTheLeft)
@@ -200,6 +209,7 @@ class Navbar extends Renderer
      * Set the right menu
      *
      * @param Menu $onTheRight
+     *
      * @return Navbar
      */
     public function onTheRight(Menu $onTheRight)
@@ -216,7 +226,7 @@ class Navbar extends Renderer
      */
     protected function getHeader()
     {
-        if (!$this->brand && !$this->handleResponsive) {
+        if (! $this->brand && ! $this->handleResponsive) {
             return '';
         }
 
@@ -271,6 +281,7 @@ class Navbar extends Renderer
      *
      * @param Menu $menu
      * @param bool $onTheRight
+     *
      * @return string
      */
     protected function renderMenu(Menu $menu = null, $onTheRight = false)
@@ -279,7 +290,7 @@ class Navbar extends Renderer
             return '';
         }
 
-        $html = '';
+        $html     = '';
         $template = '
             <ul class="nav navbar-nav %s">
                 %s
@@ -291,7 +302,9 @@ class Navbar extends Renderer
                 continue;
             }
 
-            if ($item instanceof Group) {
+            if ($item instanceof Separator) {
+                $html .= $this->renderSeparator();
+            } elseif ($item instanceof Group) {
                 $html .= $this->renderDropdown($item);
             } else {
                 $html .= $this->renderItem($item);
@@ -308,12 +321,13 @@ class Navbar extends Renderer
      * Render a list item
      *
      * @param Item $item
+     *
      * @return string
      */
     protected function renderItem(Item $item)
     {
         $template = '<li class="%s"><a href="%s">%s</a></li>';
-        $value = (null === $this->getTranslator() ? $item->value() : $this->getTranslator()->translate($item->value()));
+        $value    = (null === $this->getTranslator() ? $item->value() : $this->getTranslator()->translate($item->value()));
 
         if (in_array(WithIcon::class, class_uses($item))) {
             /** @var WithIcon $item */
@@ -328,14 +342,25 @@ class Navbar extends Renderer
     }
 
     /**
+     * Render a simple separator
+     *
+     * @return string
+     */
+    protected function renderSeparator()
+    {
+        return '<li role="separator" class="divider"></li>';
+    }
+
+    /**
      * Render a dropdown
      *
      * @param Group $group
+     *
      * @return string
      */
     protected function renderDropdown(Group $group)
     {
-        $html = '';
+        $html     = '';
         $template = '
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"> %s <span class="caret"></span></a>
@@ -357,7 +382,11 @@ class Navbar extends Renderer
                 continue;
             }
 
-            $html .= $this->renderItem($item);
+            if ($item instanceof Separator) {
+                $html .= $this->renderSeparator();
+            } else {
+                $html .= $this->renderItem($item);
+            }
         }
 
         return sprintf($template, $groupValue, $html);
