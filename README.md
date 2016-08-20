@@ -1,5 +1,6 @@
 # An extensible library to manage menus
 
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/71cb1765-6a55-4bc9-bf6f-a3b87749572f/mini.png)](https://insight.sensiolabs.com/projects/71cb1765-6a55-4bc9-bf6f-a3b87749572f) 
 [![Latest Stable Version](https://poser.pugx.org/devitek/extensible-menu/v/stable)](https://packagist.org/packages/devitek/extensible-menu)
 [![Total Downloads](https://poser.pugx.org/devitek/extensible-menu/downloads)](https://packagist.org/packages/devitek/extensible-menu)
 [![Latest Unstable Version](https://poser.pugx.org/devitek/extensible-menu/v/unstable)](https://packagist.org/packages/devitek/extensible-menu)
@@ -8,13 +9,13 @@
 
 ## Installing
 
-Add ```"devitek/menu": "^1.0.0"``` to your **composer.json** by running :
+Add ```"devitek/menu": "^2.0.0"``` to your **composer.json** by running :
 
 ```
 composer require devitek/menu
 ```
 
-And select version : ```0.*```
+And select version : ```2.*```
 
 ## How to use
 
@@ -59,6 +60,7 @@ Classes :
 * IconLink
 * Group
 * IconGroup
+* Separator
 
 Trait :
 
@@ -74,21 +76,21 @@ Twitter Bootstrap :
 
 * Navbar
 
-### Resolver
+### ResolverInterface
 
 Interface :
 
-* Resolver
+* ResolverInterface
 
 Laravel :
 
 * LaravelResolver
 
-### Translator
+### TranslatorInterface
 
 Interface :
 
-* Translator
+* TranslatorInterface
 
 Laravel :
 

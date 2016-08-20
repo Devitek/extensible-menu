@@ -3,10 +3,10 @@
 namespace Devitek\Menu\Resolver;
 
 use Devitek\Menu\Items\Link;
-use Devitek\Menu\Resolver;
+use Devitek\Menu\ResolverInterface;
 use Route;
 
-class LaravelResolver implements Resolver
+class LaravelResolver implements ResolverInterface
 {
     /**
      * Get the URL

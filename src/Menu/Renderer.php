@@ -5,22 +5,24 @@ namespace Devitek\Menu;
 abstract class Renderer
 {
     /**
-     * @var Translator
+     * @var TranslatorInterface
      */
     protected $translator;
 
     /**
-     * @var Resolver
+     * @var ResolverInterface
      */
     protected $resolver;
 
     /**
      * Set a translator
+
      *
-     * @param Translator $translator
-     * @return $this
+*@param TranslatorInterface $translator
+     *
+*@return $this
      */
-    public function translateWith(Translator $translator)
+    public function translateWith(TranslatorInterface $translator)
     {
         $this->translator = $translator;
 
@@ -29,8 +31,9 @@ abstract class Renderer
 
     /**
      * Get the translator
+
      *
-     * @return Translator
+*@return TranslatorInterface
      */
     public function getTranslator()
     {
@@ -39,11 +42,13 @@ abstract class Renderer
 
     /**
      * Set a resolver
+
      *
-     * @param Resolver $resolver
-     * @return $this
+*@param ResolverInterface $resolver
+     *
+*@return $this
      */
-    public function resolveUrlWith(Resolver $resolver)
+    public function resolveUrlWith(ResolverInterface $resolver)
     {
         $this->resolver = $resolver;
 
@@ -52,8 +57,9 @@ abstract class Renderer
 
     /**
      * Get the URL resolver
+
      *
-     * @return Resolver
+*@return ResolverInterface
      */
     public function getResolver()
     {

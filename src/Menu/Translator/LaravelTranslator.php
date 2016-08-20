@@ -2,9 +2,9 @@
 
 namespace Devitek\Menu\Translator;
 
-use Devitek\Menu\Translator;
+use Devitek\Menu\TranslatorInterface;
 
-class LaravelTranslator implements Translator
+class LaravelTranslator implements TranslatorInterface
 {
     /**
      * Translate the given text
